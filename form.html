@@ -1,0 +1,135 @@
+<html>
+<head>
+<style>
+p {
+  color: red;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+#successMsg {
+  color: green;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<h1>Form Validation</h1>
+
+<p id="successMsg"></p>
+
+<form name="myForm" onsubmit="return validateForm()">
+
+  <label>Name:</label><br>
+  <input type="text" id="name"><br>
+  <p id="nameErr"></p>
+
+  <label>Email:</label><br>
+  <input type="text" id="email"><br>
+  <p id="emailErr"></p>
+
+  <label>Password:</label><br>
+  <input type="password" id="pwd"><br>
+  <p id="pwdErr"></p>
+
+  <label>Confirm Password:</label><br>
+  <input type="password" id="cpwd"><br>
+  <p id="cpwdErr"></p>
+
+  <label>Mobile No:</label><br>
+  <input type="text" id="mobile"><br>
+  <p id="mobileErr"></p>
+
+  <label>Gender:</label><br>
+  <input type="radio" name="gender" value="male"> Male
+  <input type="radio" name="gender" value="female"> Female<br>
+  <p id="genderErr"></p>
+
+  <label>Terms & Conditions</label>
+  <input type="checkbox" id="tandc"><br>
+  <p id="tandcErr"></p>
+  <br>
+  <input type="submit" value="Submit">
+
+</form>
+
+<script>
+function validateForm() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var pwd = document.getElementById("pwd").value;
+  var cpwd = document.getElementById("cpwd").value;
+  var mobile = document.getElementById("mobile").value;
+  var tandc = document.getElementById("tandc").checked;
+  var gender = document.getElementsByName("gender");
+
+  var valid = true;
+
+  // Clear old messages
+  document.getElementById("nameErr").innerHTML = "";
+  document.getElementById("emailErr").innerHTML = "";
+  document.getElementById("pwdErr").innerHTML = "";
+  document.getElementById("cpwdErr").innerHTML = "";
+  document.getElementById("mobileErr").innerHTML = "";
+  document.getElementById("genderErr").innerHTML = "";
+  document.getElementById("tandcErr").innerHTML = "";
+  document.getElementById("successMsg").innerHTML = "";
+
+  if (name === "") {
+    document.getElementById("nameErr").innerHTML = "Name cannot be empty!";
+    valid = false;
+  }
+
+  if (email === "" || email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+    document.getElementById("emailErr").innerHTML = "Enter a valid email!";
+    valid = false;
+  }
+
+  if (pwd === "" || pwd.length < 8) {
+    document.getElementById("pwdErr").innerHTML = "Password must be at least 8 characters!";
+    valid = false;
+  }
+
+  if (cpwd === "" || cpwd !== pwd) {
+    document.getElementById("cpwdErr").innerHTML = "Passwords do not match!";
+    valid = false;
+  }
+
+  if (mobile === "" || mobile.length != 10 || isNaN(mobile)) {
+    document.getElementById("mobileErr").innerHTML = "Enter a valid 10-digit mobile number!";
+    valid = false;
+  }
+
+  var genderSelected = false;
+  for (var i = 0; i < gender.length; i++) {
+    if (gender[i].checked) {
+      genderSelected = true;
+      break;
+    }
+  }
+
+  if (!genderSelected) {
+    document.getElementById("genderErr").innerHTML = "Please select a gender!";
+    valid = false;
+  }
+
+  if (!tandc) {
+    document.getElementById("tandcErr").innerHTML = "Please accept the Terms & Conditions!";
+    valid = false;
+  }
+
+  if (valid) {
+    document.getElementById("successMsg").innerHTML = "Form successfully submitted!";
+    return false;
+  }
+
+  return false;
+}
+</script>
+
+</body>
+</html>
