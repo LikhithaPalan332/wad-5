@@ -1,0 +1,97 @@
+<html>
+<head>
+<style>
+p {
+  color: red;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+#successMsg {
+  color: green;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+</style>
+</head>
+<body>
+<h2>Course Registration Form</h2>
+<p id="successMsg"></p>
+<form onsubmit="return validateForm()">
+
+  <label>Name:</label><br>
+  <input type="text" id="name"><br>
+  <p id="nameErr"></p>
+
+  <label>Registration Number:</label><br>
+  <input type="text" id="regno"><br>
+  <p id="regErr"></p>
+
+  <label>Select Courses (Minimum 5):</label><br>
+
+  <input type="checkbox" name="course" value="AI"> Artificial Intelligence<br>
+  <input type="checkbox" name="course" value="DS"> Data Science<br>
+  <input type="checkbox" name="course" value="ML"> Machine Learning<br>
+  <input type="checkbox" name="course" value="WD"> Web Development<br>
+  <input type="checkbox" name="course" value="CN"> Computer Networks<br>
+  <input type="checkbox" name="course" value="DBMS"> DBMS<br>
+  <input type="checkbox" name="course" value="OS"> Operating Systems<br>
+  <input type="checkbox" name="course" value="SE"> Software Engineering<br>
+
+  <p id="courseErr"></p>
+
+  <input type="submit" value="Register">
+
+</form>
+
+<script>
+function validateForm() {
+  var name = document.getElementById("name").value;
+  var regno = document.getElementById("regno").value;
+  var courses = document.getElementsByName("course");
+
+  var valid = true;
+
+  document.getElementById("nameErr").innerHTML = "";
+  document.getElementById("regErr").innerHTML = "";
+  document.getElementById("courseErr").innerHTML = "";
+  document.getElementById("successMsg").innerHTML = "";
+
+  if (name === "") {
+    document.getElementById("nameErr").innerHTML = "Name cannot be empty!";
+    valid = false;
+  }
+
+  if (regno === "" || regno.length < 10) {
+    document.getElementById("regErr").innerHTML =
+      "Enter a valid registration number!";
+    valid = false;
+  }
+
+  var count = 0;
+  for (var i = 0; i < courses.length; i++) {
+    if (courses[i].checked) {
+      count++;
+    }
+  }
+
+  if (count < 5) {
+    document.getElementById("courseErr").innerHTML =
+      "Please select at least 5 courses!";
+    valid = false;
+  }
+
+  if (valid) {
+    document.getElementById("successMsg").innerHTML =
+      "Course registration successful!";
+    return false;   
+  }
+
+  return false;    
+}
+
+</script>
+</body>
+</html>
