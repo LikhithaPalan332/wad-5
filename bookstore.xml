@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookstore [
+<!ELEMENT bookstore (book+)>
+<!ELEMENT book (title, author, isbn, publisher, edition, price)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT isbn (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+<!ELEMENT edition (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+]>
+
+<bookstore>
+    <book>
+        <title>Harry potter</title>
+        <author>yyyy</author>
+        <isbn>97807438999</isbn>
+        <publisher>xxxx</publisher>
+        <edition>1st</edition>
+        <price>15.99</price>
+    </book>
+
+    <book>
+        <title>Percy Jackson </title>
+        <author>yyyy</author>
+        <isbn>9783111999</isbn>
+        <publisher>xxxx</publisher>
+        <edition>1st</edition>
+        <price>21.99</price>
+    </book>
+
+    <book>
+        <title>Lord Of Rings </title>
+        <author>aaaaa</author>
+        <isbn>14507438921</isbn>
+        <publisher>kkkkkk</publisher>
+        <edition>1st</edition>
+        <price>36.99</price>
+    </book>
+    
+    <book>
+        <title>Wings Of Fire </title>
+        <author>ttttttt</author>
+        <isbn>145345112221</isbn>
+        <publisher>mxyy</publisher>
+        <edition>1st</edition>
+        <price>67.99</price>
+    </book>
+    
+    <book>
+        <title>C programming </title>
+        <author>zzzzzz</author>
+        <isbn>14507438921</isbn>
+        <publisher>kkkkk</publisher>
+        <edition>1st</edition>
+        <price>29.99</price>
+    </book>
+    
+</bookstore>
